@@ -56,6 +56,12 @@ async function addStudent() {
         body: JSON.stringify(student)
     });
 
+    if (!response.ok) {
+        const errorText = await response.text();
+        alert("Error: " + errorText);
+        return;
+    }
+
     clearForm();
     loadStudents();
     alert("Student Added Successfully");
